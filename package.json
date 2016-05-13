@@ -1,0 +1,29 @@
+{
+  "name": "todolist-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.3.5",
+    "aws-sdk-promise": "0.0.2",
+    "co-body": "^4.0.0",
+    "forever": "^0.15.1",
+    "koa": "^1.2.0",
+    "koa-cors": "0.0.16",
+    "koa-route": "^2.4.2",
+    "mysql-promise": "^2.1.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5",
+    "nodemon": "^1.9.1",
+    "sinon": "^1.17.3",
+    "supertest": "^1.2.0"
+  }
+}
