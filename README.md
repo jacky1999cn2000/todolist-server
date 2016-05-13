@@ -4,6 +4,7 @@
   * 安装node-inspector(注意有坑啊)
     * Encountered this error when trying to make node-inspector to work `Error: Cannot find module '/usr/src/app/node_modules/node-inspector/node_modules/v8-debug/build/debug/v0.7.7/node-v47-linux-x64/debug.node`, then I realized the problem is because I run `npm install` directly on my Mac, but when the code running in docker container, it looks for linux version of node-inspector! I then deleted `node_modules` folder and run `make run` directly, and everything works fine. `make run` will first run `docker run -i --rm --name install -v 'pwd':/usr/src/app -w /usr/src/app node:5 npm install`, then there is a subtle difference since this time `npm install` was run in VM, a linux machine, so correct version of node-inspector was installed. Really tricky~ :wink:
   * docker-compose.yml文件
+
     ```javascript
      ...
       ports:
@@ -16,13 +17,16 @@
      ...
     ```
    * debug.sh文件
+
    ```javascript
     #!/bin/sh
     node_modules/.bin/node-inspector --web-port=8989 --debug-port=3344 --preload=false & node_modules/.bin/nodemon --debug -L --ignore node_modules/ --ignore tests/ app.js
    ```
    * 去 http://192.168.99.100:8989/?port=5858
+
    * 其他资料
      * [how to use node-inspector to debug node applications](http://kurtle.io/2015/11/01/how-to-set-up-node-inspector.html)
+     * 本项目里的NODE-INSPECT.md(在此基础上做了修改，这个是kasey的版本)
 
 * docker-compose.yml 两个注意点:
   * environment variables的设置
