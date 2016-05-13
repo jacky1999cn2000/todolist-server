@@ -22,6 +22,21 @@
     #!/bin/sh
     node_modules/.bin/node-inspector --web-port=8989 --debug-port=3344 --preload=false & node_modules/.bin/nodemon --debug -L --ignore node_modules/ --ignore tests/ app.js
    ```
+   * Makefile
+
+   ```javascript
+   clean:
+   	echo "clean"
+
+   install: clean
+   	docker run -i --rm --name install -v `pwd`:/usr/src/app -w /usr/src/app node:5 npm install
+
+   run: install
+   	docker-compose down
+   	docker-compose up
+
+   ```
+
    * 去 http://192.168.99.100:8989/?port=5858
 
    * 其他资料
