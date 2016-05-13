@@ -4,6 +4,9 @@ todolist-server:
    - mysql
   ports:
     - "3000:3000"
+    - "3344:3344"
+    - "8989:8989"
+    - "5858:5858"
   volumes:
     - .:/usr/src/app/
   environment:
@@ -13,7 +16,7 @@ todolist-server:
     DATABASE_PASSWORD: "password"
     DATABASE: "todoApp"
   working_dir: "/usr/src/app"
-  entrypoint: /usr/src/app/node_modules/nodemon/bin/nodemon.js -L --ignore node_modules/ --ignore public/ --ignore .tmp/ /usr/src/app/app.js
+  entrypoint: "bin/debug.sh"
 mysql:
   image: mysql
   environment:
