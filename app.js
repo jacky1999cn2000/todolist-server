@@ -11,6 +11,7 @@ app.use(cors({
 	methods: 'GET,HEAD,PUT,POST,DELETE,OPTIONS'
 }));
 app.use(routes.get('/todos/', todoController.getTodos));
+app.use(routes.get('/notes/', todoController.getNotes));
 // app.use(routes.post('/client/', clientController.createClient));
 // app.use(routes.delete('/client/:id', clientController.destroyClient));
 
